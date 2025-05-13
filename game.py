@@ -32,7 +32,6 @@ class Game:
         self.window.mainloop()
 
     def show_life_choice(self):
-        """Окно выбора: 'Завести девушку' или 'Стать лингвистом'."""
         self.window.destroy()
         
         self.choice_window = Tk()
@@ -68,24 +67,20 @@ class Game:
         ).pack(pady=20)
 
     def run_away(self, event):
-        """Заставляет кнопку 'убегать' от курсора."""
         x = random.randint(50, 650)
         y = random.randint(50, 450)
         self.girl_btn.place(x=x, y=y)  
 
     def girl_choice(self):
-        """Если выбрали 'Завести девушку'."""
         showinfo("Ошибка", "Девушка сбежала! Попробуйте 'Стать лингвистом' 😢")
         self.choice_window.destroy()
         self.init_window() 
 
     def linguist_choice(self):
-        """Если выбрали 'Стать лингвистом'."""
         self.choice_window.destroy()
         self.setup_game_window()
 
     def setup_game_window(self):
-        """Окно ввода никнейма."""
         self.starting = Tk()
         self.starting.title("Игра")
         self.starting.geometry("700x500")
@@ -136,7 +131,7 @@ class Game:
         if self.mood > 0:
             self.mood -= 0.5
             self.mood_counter.config(text=f"Настроение - {int(self.mood)}")
-            self.starting.after(1000, self.mood_func)
+            self.starting.after(700, self.mood_func)
 
     def open_work_window(self):
         WorkWindow(self)
